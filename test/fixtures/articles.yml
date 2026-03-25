@@ -2,8 +2,8 @@
 
 one:
   title: MyString
-  description: MyText
+  description: Fixture body text
 
 two:
   title: MyString
-  description: MyText
+  description: Another fixture body
