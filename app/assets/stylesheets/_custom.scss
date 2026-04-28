@@ -1,0 +1,61 @@
+.navbar {
+  background-color: black !important;
+}
+
+.nav-link {
+  color: white !important;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#home-container {
+  margin-top: 25px;
+}
+
+.jumbotron {
+  /* In Rails 8 (using Propshaft instead of Sprockets), standard url() is preferred over asset-url().
+     The asset pipeline flattens all asset paths into the /assets/ directory,
+     allowing the browser to resolve the image directly from the same root.
+  */
+  background-image: url("jumbo-copy.jpg") !important;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 425px;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: #f8f9fa;
+}
+
+#sticky-footer {
+  flex-shrink: 0;
+}
