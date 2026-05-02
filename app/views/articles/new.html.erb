@@ -1,11 +1,7 @@
-<% content_for :title, "New article" %>
+<div id="page-content" class="container">
+  <h1 class="text-center mt-4">Create a new article</h1>
 
-<h1>New article</h1>
-
-<%= render "form", article: @article %>
-
-<br>
-
-<div>
-  <%= link_to "Back to articles", articles_path %>
+  <div class="mt-4">
+    <%= render 'form' %>
+  </div>
 </div>

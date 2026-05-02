@@ -1,27 +1,43 @@
-<%= form_with(model: article) do |form| %>
-  <% if article.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
+<div class="container">
+  <% if @article.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <h4 class="alert-heading">The following errors prevented the article from being saved</h4>
       <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <%= form_with(model: @article, class: "shadow p-4 mb-4 bg-info rounded", local: true) do |f| %>
+        <div class="row mb-3">
+          <%= f.label :title, class: "col-sm-2 col-form-label text-light" %>
+          <div class="col-sm-10">
+            <%= f.text_field :title, class: "form-control shadow-sm rounded", placeholder: "Title of article" %>
+          </div>
+        </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
-  </div>
+        <div class="row mb-3">
+          <%= f.label :description, class: "col-sm-2 col-form-label text-light" %>
+          <div class="col-sm-10">
+            <%= f.text_area :description, rows: 10, class: "form-control shadow-sm rounded", placeholder: "Description of article" %>
+          </div>
+        </div>
 
-  <div>
-    <%= form.submit %>
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <%= f.submit class: "btn btn-outline-light btn-lg" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-10 text-center mb-5">
+      <%= link_to '[ Cancel and return to articles listing ]', articles_path, class: "text-info text-decoration-none" %>
+    </div>
   </div>
-<% end %>
+</div>
