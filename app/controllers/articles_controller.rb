@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
+    @article.user = User.first # Temporary fixed value
 
     respond_to do |format|
       if @article.save
@@ -65,6 +66,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.expect(article: [ :title, :description ])
+      params.expect(article: [ :title, :description, :user_id ])
     end
 end
