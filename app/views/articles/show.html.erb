@@ -13,10 +13,12 @@
             <%# simple_format ayuda a mantener los saltos de línea del texto %>
             <div class="card-text text-start"><%= simple_format(@article.description) %></div>
             <div class="mt-3">
-              <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
-              <%= link_to "Delete", article_path(@article),
-                          class: "btn btn-outline-danger",
-                          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+              <% if logged_in? && @article.user == current_user %>
+                <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
+                <%= link_to "Delete", article_path(@article),
+                            class: "btn btn-outline-danger",
+                            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+               <% end %>
             </div>
           </div>
           <div class="card-footer text-muted">
